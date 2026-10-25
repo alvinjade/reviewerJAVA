@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="tl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Programming Ultimate Reviewer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        code, pre {
+            font-family: 'Fira Code', monospace;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased pb-24 md:pb-12">
+
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-40 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-4xl mx-auto px-4 py-3.5 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-500 font-bold">
+                    <i class="fa-brands fa-java text-2xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-base font-bold text-slate-100 leading-tight">Java Mastery Reviewer</h1>
+                    <p class="text-xs text-slate-400">From Zero to Hello World 🚀</p>
+                </div>
+            </div>
+            <button id="toggleSearchBtn" class="p-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 transition">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </div>
+        
+        <!-- Interactive Search Bar -->
+        <div id="searchContainer" class="hidden max-w-4xl mx-auto px-4 pb-3">
+            <div class="relative">
+                <i class="fa-solid fa-search absolute left-3.5 top-3 text-slate-400"></i>
+                <input type="text" id="searchInput" placeholder="Magsearch ng topic (hal. Scanner, String, Array)..." 
+                    class="w-full bg-slate-950 border border-slate-700 rounded-xl pl-10 pr-4 py-2 text-sm text-slate-200 focus:outline-none focus:border-amber-500">
+            </div>
+        </div>
+
+        <!-- Horizontal Topic Pills (Mobile Friendly) -->
+        <div class="max-w-4xl mx-auto px-4 overflow-x-auto hide-scrollbar flex items-center gap-2 py-2 border-t border-slate-800/60 text-xs">
+            <a href="#section-1" class="px-3 py-1.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 whitespace-nowrap font-medium hover:bg-amber-500/20 transition">1. Intro & Basics</a>
+            <a href="#section-2" class="px-3 py-1.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700 whitespace-nowrap font-medium hover:bg-slate-700 transition">2. Rules & Style</a>
+            <a href="#section-3" class="px-3 py-1.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700 whitespace-nowrap font-medium hover:bg-slate-700 transition">3. I/O & Scanner</a>
+            <a href="#section-4" class="px-3 py-1.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700 whitespace-nowrap font-medium hover:bg-slate-700 transition">4. Data Types</a>
+            <a href="#section-5" class="px-3 py-1.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700 whitespace-nowrap font-medium hover:bg-slate-700 transition">5. Operators</a>
+            <a href="#section-6" class="px-3 py-1.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700 whitespace-nowrap font-medium hover:bg-slate-700 transition">6. If & Switch</a>
+            <a href="#section-7" class="px-3 py-1.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700 whitespace-nowrap font-medium hover:bg-slate-700 transition">7. Strings</a>
+            <a href="#section-8" class="px-3 py-1.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700 whitespace-nowrap font-medium hover:bg-slate-700 transition">8. Math Methods</a>
+            <a href="#section-9" class="px-3 py-1.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700 whitespace-nowrap font-medium hover:bg-slate-700 transition">9. Loops</a>
+            <a href="#section-10" class="px-3 py-1.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700 whitespace-nowrap font-medium hover:bg-slate-700 transition">10. Arrays</a>
+            <a href="#section-11" class="px-3 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 whitespace-nowrap font-medium hover:bg-emerald-500/20 transition">⚡ Quick Drills</a>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-6 space-y-8">
+
+        <!-- Intro Banner -->
+        <div class="bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-transparent p-5 rounded-2xl border border-amber-500/20 relative overflow-hidden">
+            <div class="relative z-10 space-y-2">
+                <span class="px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-400 text-xs font-semibold uppercase tracking-wider">Quick Study Guide</span>
+                <h2 class="text-xl font-bold text-white">Madaling Intindihing Java Reviewer 💡</h2>
+                <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                    Dinisenyo para sa mabilisang pag-aaral gamit ang phone. Pinagsama rito ang core concepts, syntax rules, code breakdowns, at quick self-test cards.
+                </p>
+            </div>
+        </div>
+
+        <!-- Section 1: Intro -->
+        <section id="section-1" class="topic-card bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-4">
+            <div class="flex items-center gap-3 border-b border-slate-800 pb-3">
+                <span class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-sm">01</span>
+                <h3 class="text-lg font-bold text-white">Introduction to Java</h3>
+            </div>
+            
+            <div class="grid sm:grid-cols-2 gap-3 text-xs sm:text-sm">
+                <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800/80">
+                    <span class="font-semibold text-amber-400 block mb-1">🧠 High-Level & Object-Oriented</span>
+                    <p class="text-slate-400 leading-relaxed">Madaling basahin ng tao at naka-organisa gamit ang <b>Classes</b> at <b>Objects</b>.</p>
+                </div>
+                <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800/80">
+                    <span class="font-semibold text-amber-400 block mb-1">🌍 WORA (Platform Independent)</span>
+                    <p class="text-slate-400 leading-relaxed"><b>Write Once, Run Anywhere</b>. Gumagana sa kahit anong OS basta may Java Virtual Machine (JVM).</p>
+                </div>
+            </div>
+
+            <div class="bg-slate-950 border border-slate-800 rounded-xl overflow-hidden">
+                <div class="bg-slate-800/50 px-4 py-2 border-b border-slate-800 flex justify-between items-center text-xs text-slate-400">
+                    <span>Basic Program Structure</span>
+                    <span class="text-amber-400 font-mono">Main.java</span>
+                </div>
+                <pre class="p-4 text-xs sm:text-sm text-slate-200 overflow-x-auto"><code><span class="text-purple-400">public class</span> <span class="text-amber-300">Main</span> {
+    <span class="text-purple-400">public static void</span> <span class="text-blue-400">main</span>(String[] args) {
+        System.out.println(<span class="text-emerald-300">"Hello, World!"</span>);
+    }
+}</code></pre>
+            </div>
+
+            <div class="bg-slate-800/40 p-3.5 rounded-xl space-y-2 text-xs text-slate-300">
+                <p>🔹 <b>public class Main:</b> Pangalan ng klase. Dapat kapareho ito ng file name na <code class="text-amber-300">Main.java</code>.</p>
+                <p>🔹 <b>main():</b> Ang entry point o simula ng pagtakbo ng Java program.</p>
+                <p>🔹 <b>System.out.println():</b> Nagpi-print ng text sa screen at lumilipat sa kasunod na linya.</p>
+            </div>
+        </section>
+
+        <!-- Section 2: Naming Rules -->
+        <section id="section-2" class="topic-card bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-4">
+            <div class="flex items-center gap-3 border-b border-slate-800 pb-3">
+                <span class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-sm">02</span>
+                <h3 class="text-lg font-bold text-white">Naming Rules & Code Style</h3>
+            </div>
+            <ul class="space-y-2 text-xs sm:text-sm text-slate-300">
+                <li class="flex items-start gap-2.5 bg-slate-950 p-3 rounded-xl border border-slate-800">
+                    <i class="fa-solid fa-check text-emerald-400 mt-1"></i>
+                    <div>
+                        <strong class="text-white block">Case-Sensitive</strong>
+                        Magkaiba ang <code class="text-amber-300">age</code> at <code class="text-amber-300">Age</code>.
+                    </div>
+                </li>
+                <li class="flex items-start gap-2.5 bg-slate-950 p-3 rounded-xl border border-slate-800">
+                    <i class="fa-solid fa-check text-emerald-400 mt-1"></i>
+                    <div>
+                        <strong class="text-white block">Class Names (UpperCamelCase)</strong>
+                        Nagsisimula sa malaking titik ang bawat salita. Hal: <code class="text-amber-300">StudentProfile</code>.
+                    </div>
+                </li>
+                <li class="flex items-start gap-2.5 bg-slate-950 p-3 rounded-xl border border-slate-800">
+                    <i class="fa-solid fa-check text-emerald-400 mt-1"></i>
+                    <div>
+                        <strong class="text-white block">Variables & Methods (lowerCamelCase)</strong>
+                        Nagsisimula sa maliit na titik ang unang salita. Hal: <code class="text-amber-300">studentName</code>, <code class="text-amber-300">calculateAverage()</code>.
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Section 3: I/O & Scanner -->
+        <section id="section-3" class="topic-card bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-4">
+            <div class="flex items-center gap-3 border-b border-slate-800 pb-3">
+                <span class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-sm">03</span>
+                <h3 class="text-lg font-bold text-white">Input, Process, & Output (Scanner)</h3>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 text-xs">
+                <div class="bg-slate-950 p-3 rounded-xl border border-slate-800">
+                    <strong class="text-amber-400 block mb-1">System.out.print()</strong>
+                    <span>Nagpi-print PERO hindi lumilipat sa bagong linya.</span>
+                </div>
+                <div class="bg-slate-950 p-3 rounded-xl border border-slate-800">
+                    <strong class="text-amber-400 block mb-1">System.out.println()</strong>
+                    <span>Nagpi-print at AGAD LUMILIPAT sa bagong linya.</span>
+                </div>
+            </div>
+
+            <div class="bg-slate-950 border border-slate-800 rounded-xl overflow-hidden">
+                <div class="bg-slate-800/50 px-4 py-2 border-b border-slate-800 text-xs text-slate-400">
+                    Scanner Example Code
+                </div>
+                <pre class="p-4 text-xs sm:text-sm text-slate-200 overflow-x-auto"><code><span class="text-purple-400">import</span> java.util.Scanner;
+
+<span class="text-purple-400">public class</span> <span class="text-amber-300">Main</span> {
+    <span class="text-purple-400">public static void</span> <span class="text-blue-400">main</span>(String[] args) {
+        Scanner input = <span class="text-purple-400">new</span> Scanner(System.in);
+        System.out.print(<span class="text-emerald-300">"Enter name: "</span>);
+        String name = input.<span class="text-blue-400">nextLine</span>(); <span class="text-slate-500">// Bumabasa ng buong linya</span>
+        System.out.println(<span class="text-emerald-300">"Hello "</span> + name);
+    }
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Section 4: Variables & Data Types -->
+        <section id="section-4" class="topic-card bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-4">
+            <div class="flex items-center gap-3 border-b border-slate-800 pb-3">
+                <span class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-sm">04</span>
+                <h3 class="text-lg font-bold text-white">Variables & Data Types</h3>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm">
+                <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800">
+                    <div class="flex justify-between font-mono text-amber-300 mb-1">
+                        <span>int</span>
+                        <span>int age = 20;</span>
+                    </div>
+                    <p class="text-slate-400">Buong numero (Whole numbers).</p>
+                </div>
+                <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800">
+                    <div class="flex justify-between font-mono text-amber-300 mb-1">
+                        <span>double</span>
+                        <span>double price = 99.95;</span>
+                    </div>
+                    <p class="text-slate-400">Numerong may decimal point.</p>
+                </div>
+                <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800">
+                    <div class="flex justify-between font-mono text-amber-300 mb-1">
+                        <span>char</span>
+                        <span>char grade = 'A';</span>
+                    </div>
+                    <p class="text-slate-400">Isang karakter lang (Gumagamit ng single quote '').</p>
+                </div>
+                <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800">
+                    <div class="flex justify-between font-mono text-amber-300 mb-1">
+                        <span>boolean</span>
+                        <span>boolean isPass = true;</span>
+                    </div>
+                    <p class="text-slate-400">Magiging <code class="text-emerald-400">true</code> o <code class="text-rose-400">false</code> lang.</p>
+                </div>
+                <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 sm:col-span-2">
+                    <div class="flex justify-between font-mono text-amber-300 mb-1">
+                        <span>String (Reference Type)</span>
+                        <span>String name = "Maria";</span>
+                    </div>
+                    <p class="text-slate-400">Mga salita o text (Gumagamit ng double quote ""). Hindi ito primitive type.</p>
+                </div>
+            </div>
+
+            <!-- Typecasting Cheat Sheet -->
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
+                <span class="text-amber-400 font-bold text-xs uppercase tracking-wider block">Typecasting Basics</span>
+                <div class="grid sm:grid-cols-2 gap-3 text-xs">
+                    <div class="bg-slate-900 p-3 rounded-lg border border-slate-800">
+                        <strong class="text-white block mb-1">Implicit (Widening)</strong>
+                        <p class="text-slate-400 mb-2">Awtomatiko mula sa maliit papuntang malaking type (int ➔ double).</p>
+                        <code class="text-emerald-300 block font-mono">double b = 10; // 10.0</code>
+                    </div>
+                    <div class="bg-slate-900 p-3 rounded-lg border border-slate-800">
+                        <strong class="text-white block mb-1">Explicit (Narrowing)</strong>
+                        <p class="text-slate-400 mb-2">Manwal na pag-convert gamit ang cast notation (Nawawala ang decimal!).</p>
+                        <code class="text-rose-300 block font-mono">int p = (int) 99.95; // 99</code>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Operators -->
+        <section id="section-5" class="topic-card bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-4">
+            <div class="flex items-center gap-3 border-b border-slate-800 pb-3">
+                <span class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-sm">05</span>
+                <h3 class="text-lg font-bold text-white">Java Operators & Bitwise</h3>
+            </div>
+
+            <div class="space-y-3 text-xs sm:text-sm">
+                <!-- Modulo & Integer Division Alert -->
+                <div class="bg-amber-500/10 border border-amber-500/20 p-3.5 rounded-xl space-y-1">
+                    <strong class="text-amber-400 block font-bold">⚠️ Tandaan sa Exam: Modulo (%) at Integer Division (/)</strong>
+                    <p class="text-slate-300 text-xs">
+                        • Modulo (<code class="text-amber-300">%</code>): Kukuha ng <b>tira (remainder)</b>. Hal: <code class="text-amber-300">13 % 6 = 1</code>.<br>
+                        • Kapag int divided by int (<code class="text-amber-300">/</code>), tinitapon ang decimal! Hal: <code class="text-amber-300">7 / 2 = 3</code> (hindi 3.5).
+                    </p>
+                </div>
+
+                <!-- Logical Operators -->
+                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
+                    <span class="text-amber-400 font-bold text-xs uppercase tracking-wider block">Logical Operators</span>
+                    <div class="grid grid-cols-3 gap-2 text-center text-xs">
+                        <div class="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                            <code class="text-amber-300 block font-bold mb-1">&& (AND)</code>
+                            <span class="text-slate-400">Dapat PAREHONG true</span>
+                        </div>
+                        <div class="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                            <code class="text-amber-300 block font-bold mb-1">|| (OR)</code>
+                            <span class="text-slate-400">Kahit ISA lang ay true</span>
+                        </div>
+                        <div class="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                            <code class="text-amber-300 block font-bold mb-1">! (NOT)</code>
+                            <span class="text-slate-400">Pina-baliktad ang boolean</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- String Concatenation Precedence -->
+                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
+                    <span class="text-amber-400 font-bold text-xs uppercase tracking-wider block">String Concatenation Trap</span>
+                    <pre class="bg-slate-900 p-3 rounded-lg text-xs font-mono text-slate-200">System.out.println("Result: " + 5 + 5);   // Output: Result: 55
+System.out.println("Result: " + (5 + 5)); // Output: Result: 10</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: If, Else & Switch -->
+        <section id="section-6" class="topic-card bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-4">
+            <div class="flex items-center gap-3 border-b border-slate-800 pb-3">
+                <span class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-sm">06</span>
+                <h3 class="text-lg font-bold text-white">Decision Making (If & Switch)</h3>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-3 text-xs">
+                <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 space-y-2">
+                    <strong class="text-amber-400 text-sm block">Traditional Switch</strong>
+                    <p class="text-slate-400">Kailangan ng <code class="text-rose-400">break;</code> para hindi mag-fall-through o tumuloy sa susunod na case!</p>
+                    <pre class="bg-slate-900 p-2.5 rounded-lg text-slate-200 font-mono">switch(day) {
+    case "MON": 
+        doWork(); 
+        break;
+}</pre>
+                </div>
+                <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 space-y-2">
+                    <strong class="text-emerald-400 text-sm block">Modern Switch Arrow (->)</strong>
+                    <p class="text-slate-400">Hindi nangangailangan ng break; at awtomatikong naiwasan ang fall-through.</p>
+                    <pre class="bg-slate-900 p-2.5 rounded-lg text-slate-200 font-mono">switch(day) {
+    case "MON" -> "Weekday";
+};</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 7: Strings -->
+        <section id="section-7" class="topic-card bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-4">
+            <div class="flex items-center gap-3 border-b border-slate-800 pb-3">
+                <span class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-sm">07</span>
+                <h3 class="text-lg font-bold text-white">String Methods Cheat Sheet</h3>
+            </div>
+
+            <div class="bg-rose-500/10 border border-rose-500/20 p-3 rounded-xl text-xs text-rose-300">
+                <strong>🚨 Important Rule:</strong> Huwag gumamit ng <code class="font-bold">==</code> sa pagkumpara ng String content! Gamitin ang <code class="font-bold font-mono">equals()</code> o <code class="font-bold font-mono">equalsIgnoreCase()</code>.
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 font-mono">
+                    <span class="text-amber-300 font-bold">length()</span>
+                    <p class="text-slate-400 text-xs font-sans mt-1">Bilang ng karakter sa text.</p>
+                </div>
+                <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 font-mono">
+                    <span class="text-amber-300 font-bold">charAt(0)</span>
+                    <p class="text-slate-400 text-xs font-sans mt-1">Unang karakter (Zero-based index).</p>
+                </div>
+                <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 font-mono">
+                    <span class="text-amber-300 font-bold">indexOf("x")</span>
+                    <p class="text-slate-400 text-xs font-sans mt-1">Posisyon ng text. Magbabalik ng <b>-1</b> kapag hindi nahanap.</p>
+                </div>
+                <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 font-mono">
+                    <span class="text-amber-300 font-bold">trim()</span>
+                    <p class="text-slate-400 text-xs font-sans mt-1">Tinatanggal ang spaces sa unahan at hulihan.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 8: Math Methods -->
+        <section id="section-8" class="topic-card bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-4">
+            <div class="flex items-center gap-3 border-b border-slate-800 pb-3">
+                <span class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-sm">08</span>
+                <h3 class="text-lg font-bold text-white">Java Math Utility Methods</h3>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs">
+                <div class="bg-slate-950 p-3 rounded-xl border border-slate-800">
+                    <code class="text-amber-300 block font-bold mb-1">Math.ceil(4.1)</code>
+                    <span class="text-slate-400">Pataas na rounding ➔ <b>5.0</b></span>
+                </div>
+                <div class="bg-slate-950 p-3 rounded-xl border border-slate-800">
+                    <code class="text-amber-300 block font-bold mb-1">Math.floor(4.9)</code>
+                    <span class="text-slate-400">Pababa na rounding ➔ <b>4.0</b></span>
+                </div>
+                <div class="bg-slate-950 p-3 rounded-xl border border-slate-800">
+                    <code class="text-amber-300 block font-bold mb-1">Math.abs(-15)</code>
+                    <span class="text-slate-400">Positive distance ➔ <b>15</b></span>
+                </div>
+                <div class="bg-slate-950 p-3 rounded-xl border border-slate-800">
+                    <code class="text-amber-300 block font-bold mb-1">Math.pow(2, 3)</code>
+                    <span class="text-slate-400">Exponentiation ➔ <b>8.0</b></span>
+                </div>
+                <div class="bg-slate-950 p-3 rounded-xl border border-slate-800">
+                    <code class="text-amber-300 block font-bold mb-1">Math.sqrt(25)</code>
+                    <span class="text-slate-400">Square root ➔ <b>5.0</b></span>
+                </div>
+                <div class="bg-slate-950 p-3 rounded-xl border border-slate-800">
+                    <code class="text-amber-300 block font-bold mb-1">Math.random()</code>
+                    <span class="text-slate-400">Random 0.0 to 0.999...</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 9: Loops -->
+        <section id="section-9" class="topic-card bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-4">
+            <div class="flex items-center gap-3 border-b border-slate-800 pb-3">
+                <span class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-sm">09</span>
+                <h3 class="text-lg font-bold text-white">Loops (for, while, do-while)</h3>
+            </div>
+
+            <div class="grid sm:grid-cols-3 gap-3 text-xs">
+                <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 space-y-1">
+                    <strong class="text-amber-400 block text-sm">for Loop</strong>
+                    <p class="text-slate-400">Ginagamit kapag <b>ALAM ANG BILANG</b> ng ulit.</p>
+                </div>
+                <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 space-y-1">
+                    <strong class="text-amber-400 block text-sm">while Loop</strong>
+                    <p class="text-slate-400">Bago tumakbo, chine-check ang condition. Pwedeng mag-0 runs.</p>
+                </div>
+                <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 space-y-1">
+                    <strong class="text-amber-400 block text-sm">do-while Loop</strong>
+                    <p class="text-slate-400">Tumatakbo muna ng <b>ISANG BESES</b> bago i-check ang condition.</p>
+                </div>
+            </div>
+
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex gap-4 text-xs">
+                <div class="flex-1 space-y-1">
+                    <span class="text-amber-400 font-bold block">break;</span>
+                    <p class="text-slate-400">Inihihinto at tinatapos nang tuluyan ang buong loop.</p>
+                </div>
+                <div class="flex-1 space-y-1 border-l border-slate-800 pl-4">
+                    <span class="text-amber-400 font-bold block">continue;</span>
+                    <p class="text-slate-400">Linararasan (skips) ang kasalukuyang ikot at lumilipat sa susunod.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 10: Arrays -->
+        <section id="section-10" class="topic-card bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-4">
+            <div class="flex items-center gap-3 border-b border-slate-800 pb-3">
+                <span class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-sm">10</span>
+                <h3 class="text-lg font-bold text-white">Arrays (1D & 2D)</h3>
+            </div>
+
+            <div class="space-y-3 text-xs sm:text-sm">
+                <p class="text-slate-300">Nagtatago ng maraming values sa iisang variable. Ang index ay laging **nagsisimula sa 0**.</p>
+                
+                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
+                    <span class="text-amber-400 font-bold text-xs uppercase tracking-wider block">Index & Length Formula</span>
+                    <div class="grid grid-cols-2 gap-3 text-xs">
+                        <div class="bg-slate-900 p-3 rounded-lg border border-slate-800">
+                            <span class="text-slate-400 block">First Valid Index</span>
+                            <strong class="text-white text-base">0</strong>
+                        </div>
+                        <div class="bg-slate-900 p-3 rounded-lg border border-slate-800">
+                            <span class="text-slate-400 block">Last Valid Index</span>
+                            <strong class="text-white text-base">arr.length - 1</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 11: Interactive Mini Practice Cards -->
+        <section id="section-11" class="topic-card bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                <div class="flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-sm">⚡</span>
+                    <h3 class="text-lg font-bold text-white">Quick Review Flashcard Drills</h3>
+                </div>
+                <span class="text-xs text-slate-400">Click to reveal answer</span>
+            </div>
+
+            <div id="flashcardsContainer" class="grid sm:grid-cols-2 gap-3">
+                <!-- Flashcards rendered via JS -->
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Toggle Search
+        const toggleSearchBtn = document.getElementById('toggleSearchBtn');
+        const searchContainer = document.getElementById('searchContainer');
+        const searchInput = document.getElementById('searchInput');
+
+        toggleSearchBtn.addEventListener('click', () => {
+            searchContainer.classList.toggle('hidden');
+            if (!searchContainer.classList.contains('hidden')) {
+                searchInput.focus();
+            }
+        });
+
+        // Search Filter Logic
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.topic-card');
+
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // Interactive Flashcards Data
+        const drills = [
+            { q: "Ano ang output ng 13 % 6?", a: "1 (Remainder o tira)" },
+            { q: "Ano ang value ng (int) 99.95?", a: "99 (Tinapon ang decimal)" },
+            { q: "Anong method ang nag-o-ignore ng case sa String comparison?", a: "equalsIgnoreCase()" },
+            { q: "Anong loop ang tumatakbo nang kamukha ng kahit ISANG beses muna?", a: "do-while" },
+            { q: "Ano ang unang valid index sa Java array?", a: "0" },
+            { q: "Ano ang output ng 5 << 2 para sa positive int?", a: "20 (5 * 2^2)" },
+            { q: "Ano ang output ng \"Result: \" + 5 + 5?", a: "\"Result: 55\"" },
+            { q: "Ano ang output ng \"Result: " + (5 + 5) + "\"?", a: "\"Result: 10\"" },
+            { q: "Ano ang ginagawa ng break; sa loop?", a: "Tinatapos agad ang buong loop." },
+            { q: "Ano ang ginagawa ng continue; sa loop?", a: "Inilalaktawan ang kasalukuyang ikot papunta sa kasunod." }
+        ];
+
+        const container = document.getElementById('flashcardsContainer');
+
+        drills.forEach((item, index) => {
+            const card = document.createElement('div');
+            card.className = "bg-slate-950 p-4 rounded-xl border border-slate-800 cursor-pointer hover:border-amber-500/50 transition space-y-2 select-none";
+            card.innerHTML = `
+                <div class="flex items-center justify-between text-xs text-slate-400">
+                    <span class="font-bold text-amber-400">Drill #${index + 1}</span>
+                    <i class="fa-solid fa-rotate text-slate-500"></i>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-200 font-medium">${item.q}</p>
+                <div class="answer hidden pt-2 border-t border-slate-800 text-xs text-emerald-400 font-semibold font-mono">
+                    Sagot: ${item.a}
+                </div>
+            `;
+
+            card.addEventListener('click', () => {
+                const ans = card.querySelector('.answer');
+                ans.classList.toggle('hidden');
+            });
+
+            container.appendChild(card);
+        });
+    </script>
+</body>
+</html>
